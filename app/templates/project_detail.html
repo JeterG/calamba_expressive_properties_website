@@ -1,56 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achievements - Calamba Expressive Properties</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Calamba Expressive Properties Corporation</h1>
-        <nav>
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('about') }}">About Us</a>
-            <a href="{{ url_for('services') }}">Services</a>
-            <a href="{{ url_for('projects') }}">Projects</a>
-            <a href="{{ url_for('team') }}">Our Team</a>
-            <a href="{{ url_for('achievements') }}">Achievements</a>
-            <a href="{{ url_for('partners') }}">Partners</a>
-            <a href="{{ url_for('contact') }}">Contact Us</a>
-        </nav>
-    </header>
-    <main>
-<section>
-    <h1>{{ project_name }}:</h1>
-    <section>
-        {% for text in text_content %}
-        <p style="font-size: 50;">{{ text }}</p>
-        {% endfor %}
-    </section>
+{% extends "base.html" %}
 
-    <div class="grid-container">
+{% block title %}Achievements - Calamba Expressive Properties{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <!-- Left Half: Text Content -->
+        <div class="col-md-6">
+            <h1>{{ project_name }}:</h1>
+
+            <!-- Display text content -->
+            <section>
+                {% for text in text_content %}
+                <p style="font-size: 20px;">{{ text }}</p>
+                {% endfor %}
+            </section>
+        </div>
+
+        <!-- Right Half: Carousel -->
+        <div class="col-md-6">
+            <!-- Bootstrap Carousel for Sliding Images -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {% for image in images %}
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" class="{% if loop.first %}active{% endif %}"></li>
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                    {% for image in images %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <img class="d-block img-fluid" src="{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}" alt="Slide {{ loop.index }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Below the Carousel -->
+    <div class="row gallery-container justify-content-center">
         {% for image in images %}
-        <div class="grid-item">
-            <img src="{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}" alt="{{ image }}" onclick="openModal('{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}', '{{ " "  }}')">
+        <div class="gallery" onclick="changeCarouselSlide('{{ loop.index0 }}')">
+            <img src="{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}" alt="Image {{ loop.index }}">
         </div>
         {% endfor %}
     </div>
 </section>
+{% endblock %}
 
-</main>
-<footer>
-    <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.</p>
-</footer>
+{% block extra_head %}
+<style>
+    /* Ensure gallery images resize dynamically */
+    .gallery {
+        margin: 5px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 100px;
+        cursor: pointer;
+    }
 
- <!-- Modal Structure -->
-<div id="myModal" class="modal" onclick="closeModalOnOutsideClick(event)">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImg">
-    <div id="caption"></div>
-</div>
+    .gallery:hover {
+        border: 1px solid #777;
+    }
 
-<script src="{{ url_for('static', filename='js/modal.js') }}"></script>
-</body>
-</html>
+    .gallery img {
+        width: 100%;
+        height: auto;
+    }
+
+    .gallery-container {
+        clear: both;
+        padding-top: 20px;
+    }
+
+    .carousel-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .carousel-inner {
+        background-color: #c8102e; /* Carousel background color */
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #c8102e;
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+        background-color: #a77846;
+    }
+
+    .container-fluid {
+        padding-top: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    // Function to change the carousel slide when clicking on the gallery images
+    function changeCarouselSlide(slideIndex) {
+        $('#carouselExampleIndicators').carousel(parseInt(slideIndex));
+    }
+</script>
+{% endblock %}
