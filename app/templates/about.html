@@ -9,6 +9,26 @@
     <p><strong>Our Mission:</strong> Broadening sales with professional real estate personnel, and to process inventory of properties with sincere dealings with the notion of clients above all.</p>
     <h3>CEO/President</h3>
     <p>Erlinda "Lyn" Manguiat, CEO & President of Calamba Expressive Properties Corporation, has a long history of success in the real estate market.</p>
-    <img src="{{ url_for('static', filename='images/image_2.jpg') }}" alt="CEO image">
+    
+    <!-- Center the image -->
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/image_2.jpg') }}" alt="CEO image" class="center-img">
+    </div>
 </section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Centering image with flexbox */
+    .image-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .center-img {
+        max-width: 100%;
+        height: auto; /* Maintain aspect ratio */
+    }
+</style>
 {% endblock %}
