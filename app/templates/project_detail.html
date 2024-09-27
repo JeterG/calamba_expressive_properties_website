@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Calamba Expressive Properties</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Calamba Expressive Properties Corporation</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+            <a href="{{ url_for('services') }}">Services</a>
+            <a href="{{ url_for('projects') }}">Projects</a>
+            <a href="{{ url_for('team') }}">Our Team</a>
+            <a href="{{ url_for('achievements') }}">Achievements</a>
+            <a href="{{ url_for('partners') }}">Partners</a>
+            <a href="{{ url_for('contact') }}">Contact Us</a>
+        </nav>
+    </header>
+    <main>
+<section>
+    <h1>{{ project_name }}:</h1>
+    <section>
+        {% for text in text_content %}
+        <p style="font-size: 50;">{{ text }}</p>
+        {% endfor %}
+    </section>
+
+    <div class="grid-container">
+        {% for image in images %}
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}" alt="{{ image }}" onclick="openModal('{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}', '{{ " "  }}')">
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+</main>
+<footer>
+    <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.</p>
+</footer>
+
+ <!-- Modal Structure -->
+<div id="myModal" class="modal" onclick="closeModalOnOutsideClick(event)">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="caption"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+</body>
+</html>

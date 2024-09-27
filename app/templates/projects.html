@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - Calamba Expressive Properties{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Our Projects</h2>
+    <div class="grid-container">
+        {% for project in projects %}
+        <div class="grid-item">
+            <a href="{{ url_for('project_detail', project_name=project.name) }}">
+                <img src="{{ url_for('static', filename='images/projects/' ~ project.name ~ '/' ~ project.image) }}" alt="{{ project.name }}">
+                <h3>{{ project.name }}</h3>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
