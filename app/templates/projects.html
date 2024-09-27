@@ -8,7 +8,7 @@
     <div class="row">
         {% for project in projects %}
         <div class="col-md-4">
-            <div class="card mb-4" style="width: 18rem; background-color: #c8102e; border-color: #c8102e;">
+            <div class="card md-4" style="width: 18rem; background-color: #c8102e; border-color: #c8102e;">
                 <a href="{{ url_for('project_detail', project_name=project.name) }}">
                     <img class="card-img-top" src="{{ url_for('static', filename='images/projects/' ~ project.name ~ '/' ~ project.image) }}" alt="{{ project.name }}">
                 </a>
