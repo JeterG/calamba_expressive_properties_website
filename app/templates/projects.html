@@ -5,15 +5,48 @@
 {% block content %}
 <section>
     <h2>Our Projects</h2>
-    <div class="grid-container">
+    <div class="row">
         {% for project in projects %}
-        <div class="grid-item">
-            <a href="{{ url_for('project_detail', project_name=project.name) }}">
-                <img src="{{ url_for('static', filename='images/projects/' ~ project.name ~ '/' ~ project.image) }}" alt="{{ project.name }}">
-                <h3>{{ project.name }}</h3>
-            </a>
+        <div class="col-md-4">
+            <div class="card mb-4" style="width: 18rem; background-color: #c8102e; border-color: #c8102e;">
+                <a href="{{ url_for('project_detail', project_name=project.name) }}">
+                    <img class="card-img-top" src="{{ url_for('static', filename='images/projects/' ~ project.name ~ '/' ~ project.image) }}" alt="{{ project.name }}">
+                </a>
+                <div class="card-body text-white">
+                    <h5 class="card-title">{{ project.name }}</h5>
+                    <p class="card-text">Learn more about our {{ project.name }} project by clicking here.</p>
+                    <a href="{{ url_for('project_detail', project_name=project.name) }}" class="btn btn-light">View Project</a>
+                </div>
+            </div>
         </div>
         {% endfor %}
     </div>
 </section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+    .card {
+        border-radius: 8px;
+    }
+    .card-body {
+        background-color: #c8102e; /* Card background color */
+        color: white; /* Text color inside the card */
+    }
+    .card-title {
+        color: white;
+        font-weight: bold;
+    }
+    .card-text {
+        color: white;
+    }
+    .btn-light {
+        background-color: #f3ef11; /* Button color */
+        color: #c8102e; /* Text color on the button */
+    }
+    .btn-light:hover {
+        background-color: #c8102e;
+        color: white;
+    }
+</style>
 {% endblock %}
