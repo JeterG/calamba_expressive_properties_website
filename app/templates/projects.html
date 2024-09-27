@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+
+
 {% block title %}Projects - Calamba Expressive Properties{% endblock %}
 
 {% block content %}
@@ -32,7 +34,7 @@
     .grid-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
-        grid-gap: 20px;
+        grid-gap: 40px; /* Increased gap between items */
         margin-top: 20px;
     }
 
@@ -40,6 +42,7 @@
     .grid-item {
         display: flex;
         justify-content: center;
+        padding: 20px; /* Add padding to create more separation */
     }
 
     /* Card styling */
@@ -48,18 +51,11 @@
         border-radius: 8px;
         background-color: #c8102e;
         color: white;
+        border: 2px solid #f3ef11; /* Add a border to the card itself */
     }
 
     .card-body {
         background-color: #c8102e;
-        color: white;
-    }
-
-    .card-title {
-        font-weight: bold;
-    }
-
-    .card-text {
         color: white;
     }
 
