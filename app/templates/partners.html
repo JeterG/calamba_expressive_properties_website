@@ -1,51 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achievements - Calamba Expressive Properties</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Calamba Expressive Properties Corporation</h1>
-        <nav>
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('about') }}">About Us</a>
-            <a href="{{ url_for('services') }}">Services</a>
-            <a href="{{ url_for('projects') }}">Projects</a>
-            <a href="{{ url_for('team') }}">Our Team</a>
-            <a href="{{ url_for('achievements') }}">Achievements</a>
-            <a href="{{ url_for('partners') }}">Partners</a>
-            <a href="{{ url_for('contact') }}">Contact Us</a>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h1 style="text-align: center;">Our Investors
-            </h1>
-            <div class="grid-container">
-                {% for image in images %}
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='images/partners/' ~ image) }}" alt="{{ image }}" onclick="openModal('{{ url_for('static', filename='images/partners/' ~ image) }}', '')">
+{% extends "base.html" %}
 
-                </div>
-                {% endfor %}
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.</p>
-    </footer>
+{% block title %}Our Investors - Calamba Expressive Properties{% endblock %}
 
-     <!-- Modal Structure -->
-    <div id="myModal" class="modal" onclick="closeModalOnOutsideClick(event)">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImg">
-        <div id="caption"></div>
+{% block content %}
+<section>
+    <h1 style="text-align: center;">Our Investors</h1>
+    <div class="grid-container">
+        {% for image in images %}
+        <div class="grid-item">
+            <img src="{{ url_for('static', filename='images/partners/' ~ image) }}" alt="{{ image }}" onclick="openModal('{{ url_for('static', filename='images/partners/' ~ image) }}', '')">
+        </div>
+        {% endfor %}
     </div>
+</section>
 
-    <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
-</body>
-</html>
+<!-- Modal Structure -->
+<div id="myModal" class="modal" onclick="closeModalOnOutsideClick(event)">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="caption"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+{% endblock %}
