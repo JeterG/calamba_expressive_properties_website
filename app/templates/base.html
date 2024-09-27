@@ -8,11 +8,34 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <style>
-        .navbar-custom {
-            background-color: #c8102e !important; /* Background color */
+        /* Main layout styling to make footer stick to the bottom */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
         }
+
+        main {
+            flex: 1; /* This will make the main content area expand to fill available space */
+        }
+
+        .navbar-custom {
+            background-color: #c8102e !important; /* Navbar background color */
+        }
+
         .navbar-custom .nav-link, .navbar-custom .navbar-brand, .navbar-custom .navbar-text {
-            color: #f3ef11 !important; /* Text color */
+            color: #f3ef11 !important; /* Navbar text color */
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #c8102e; /* Footer background color */
+            color: #f3ef11; /* Footer text color */
+            padding: 20px 0;
+            width: 100%;
+            position: relative;
+            bottom: 0;
         }
     </style>
     {% block extra_head %}{% endblock %}
@@ -60,7 +83,7 @@
     <main>
         {% block content %}{% endblock %}
     </main>
-    <footer class="text-center mt-4">
+    <footer class="text-center">
         <p>&copy; 2024 Calamba Expressive Properties Corporation. All rights reserved.</p>
     </footer>
 
@@ -70,7 +93,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     {% block extra_scripts %}
     <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
-
     {% endblock %}
 </body>
 </html>
