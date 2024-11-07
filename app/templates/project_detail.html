@@ -12,9 +12,10 @@
             <!-- Display text content -->
             <section>
                 {% for text in text_content %}
-                <p style="font-size: 20px;">{{ text }}</p>
+                <p id="listing-text" style="font-size: 20px;">{{ text }}</p>
                 {% endfor %}
             </section>
+            <a id="whatsappLink" target="_blank">Message Us on WhatsApp</a>
         </div>
 
         <!-- Right Half: Carousel -->
@@ -23,13 +24,16 @@
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     {% for image in images %}
-                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}" class="{% if loop.first %}active{% endif %}"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ loop.index0 }}"
+                        class="{% if loop.first %}active{% endif %}"></li>
                     {% endfor %}
                 </ol>
                 <div class="carousel-inner">
                     {% for image in images %}
                     <div class="carousel-item {% if loop.first %}active{% endif %}">
-                        <img class="d-block img-fluid" src="{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}" alt="Slide {{ loop.index }}">
+                        <img class="d-block img-fluid"
+                            src="{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}"
+                            alt="Slide {{ loop.index }}">
                     </div>
                     {% endfor %}
                 </div>
@@ -49,7 +53,8 @@
     <div class="row gallery-container justify-content-center">
         {% for image in images %}
         <div class="gallery" onclick="changeCarouselSlide('{{ loop.index0 }}')">
-            <img src="{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}" alt="Image {{ loop.index }}">
+            <img src="{{ url_for('static', filename='images/projects/' ~ project_name ~ '/' ~ image) }}"
+                alt="Image {{ loop.index }}">
         </div>
         {% endfor %}
     </div>
@@ -88,7 +93,8 @@
     }
 
     .carousel-inner {
-        background-color: #c8102e; /* Carousel background color */
+        background-color: #c8102e;
+        /* Carousel background color */
     }
 
     .carousel-control-prev-icon,
@@ -119,5 +125,18 @@
     function changeCarouselSlide(slideIndex) {
         $('#carouselExampleIndicators').carousel(parseInt(slideIndex));
     }
+</script>
+
+<script>
+    var listingText = document.getElementById("listing-text").textContent;
+    const phoneNumber = "1234567890";
+    const message = "Hello, I’m interested in learning more about " + listingText + "Could you please provide more details?";
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // Set the href of the link with id "whatsappLink" to the generated WhatsApp link
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("whatsappLink").href = whatsappLink;
+    });
 </script>
 {% endblock %}
