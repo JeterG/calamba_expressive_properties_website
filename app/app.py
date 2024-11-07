@@ -41,6 +41,7 @@ def projects():
                 f
                 for f in os.listdir(project_path)
                 if os.path.isfile(os.path.join(project_path, f))
+                if f.endswith(".jpeg")
             ]
             if images:
                 first_image = images[0]
