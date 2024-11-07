@@ -7,7 +7,7 @@
     <div class="row">
         <!-- Left Half: Text Content -->
         <div class="col-md-6">
-            <h1>{{ project_name }}:</h1>
+            <h1 id ="projectName">{{ project_name }}:</h1>
 
             <!-- Display text content -->
             <section>
@@ -129,8 +129,9 @@
 
 <script>
     var listingText = document.getElementById("listing-text").textContent;
-    const phoneNumber = "1234567890";
-    const message = "Hello, I’m interested in learning more about " + listingText + "Could you please provide more details?";
+    var projectName = document.getElementById("projectName").textContent;
+    const phoneNumber = "639276154651";
+    const message = "Hello, I’m interested in learning more about " + projectName +listingText + "Could you please provide more details?";
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
