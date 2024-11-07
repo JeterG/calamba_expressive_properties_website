@@ -48,12 +48,12 @@
 <style>
     /* Carousel image size control */
     .carousel-img {
-        width: 80%; /* Ensure the image fills the carousel width */
-        max-width: auto; /* Set maximum width for images */
-        height: auto; /* Fixed height for the carousel images */
-        object-fit: cover; /* Ensures aspect ratio is maintained and image is cropped to fit */
-        margin: auto; /* Center the image */
-    }
+    width: 60%; /* Reduce width to make images smaller */
+    max-width: 100%; /* Ensure images do not exceed carousel container width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures aspect ratio is maintained and image is cropped to fit */
+    margin: auto; /* Center the image */
+}
 
     /* Adjust gallery item size */
     .gallery-item {
