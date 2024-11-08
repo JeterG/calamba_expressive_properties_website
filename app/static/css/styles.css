@@ -82,3 +82,21 @@ footer {
     font-weight: bold;
 }
 
+
+/* Center the image container */
+.image-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically if needed */
+    width: 100%;
+    padding: 20px;
+}
+
+/* Make the image responsive */
+.center-img {
+    max-width: 90%;  /* Restrict width to 90% of the container */
+    height: auto;    /* Maintain aspect ratio */
+    max-height: 800px; /* Ensure it doesn't exceed 800px in height */
+    border-radius: 5px; /* Optional: add some rounding */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Optional: add a shadow effect */
+}

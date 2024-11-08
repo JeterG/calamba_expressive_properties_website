@@ -4,8 +4,10 @@
 
 {% block content %}
 <section>
-    <h2>Welcome to Calamba Expressive Properties Corporation</h2>
-    <p>Your trusted partner in real estate.</p>
-    <img src="{{ url_for('static', filename='images/image_1.jpg') }}" alt="Real estate image">
+    <h2 style="text-align: center;">Welcome to Calamba Expressive Properties Corporation</h2>
+    <p style="text-align: center;">Your trusted partner in real estate.</p>
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/image_1.jpg') }}" alt="Real estate image" class="center-img">
+    </div>
 </section>
 {% endblock %}
