@@ -3,11 +3,87 @@
 {% block title %}Our Team - Calamba Expressive Properties{% endblock %}
 
 {% block content %}
-<section>
+<section class="center-text team-section">
     <h2>Meet Our Team</h2>
-    <p><strong>Erlinda Manguiat</strong> - CEO & President</p>
-    <p><strong>Dianna Rose Manguiat</strong> - Corporate Treasurer</p>
-    <p><strong>David Roy Manguiat</strong> - Corporate Secretary</p>
-    <p><strong>Darlyn Manguiat</strong> - Board of Director</p>
+
+    <!-- Team Member 1 -->
+    <div class="team-member">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/team/erlinda_manguiat.jpg') }}" alt="Erlinda Manguiat" class="team-img">
+        </div>
+        <p><strong>Erlinda Manguiat</strong> - CEO & President</p>
+    </div>
+
+    <!-- Team Member 2 -->
+    <div class="team-member">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/team/dianna_rose_manguiat.jpg') }}" alt="Dianna Rose Manguiat" class="team-img">
+        </div>
+        <p><strong>Dianna Rose Manguiat</strong> - Corporate Treasurer</p>
+    </div>
+
+    <!-- Team Member 3 -->
+    <div class="team-member">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/team/david_roy_manguiat.jpg') }}" alt="David Roy Manguiat" class="team-img">
+        </div>
+        <p><strong>David Roy Manguiat</strong> - Corporate Secretary</p>
+    </div>
+
+    <!-- Team Member 4 -->
+    <div class="team-member">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/team/darlynne_manguiat.jpg') }}" alt="Darlyn Manguiat" class="team-img">
+        </div>
+        <p><strong>Darlynne Manguiat</strong> - Board of Director</p>
+    </div>
 </section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Center the text and images */
+    .center-text {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .team-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; /* Space between team members */
+    }
+
+    .team-member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 300px;
+        width: 100%;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .team-img {
+        width: 100%;
+        max-width: 200px; /* Adjust image size */
+        height: auto;
+        border-radius: 50%; /* Make image circular */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+        .team-section {
+            padding: 10px;
+        }
+        .team-member {
+            max-width: 80%;
+        }
+    }
+</style>
 {% endblock %}
