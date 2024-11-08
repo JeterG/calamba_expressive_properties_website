@@ -18,9 +18,15 @@
             <!-- WhatsApp Link with Icon -->
             <a id="whatsappLink" target="_blank" class="whatsapp-link">
                 <i class="fab fa-whatsapp whatsapp-icon"></i>
-                Message Us on WhatsApp
+                Message Us on WhatsApp about {{project_name}}
             </a>
 
+            <div class="container mt-5 text-center">
+                <a href="mailto:cepc.development@gmail.com?subject=Inquiry%20about%20Calamba%20Expressive%20Properties&body=Hello,%20I%20am%20interested%20in%20learning%20more%20about%20your%20services.%20Please%20provide%20me%20with%20additional%20information."
+                    target="_self" class="email-link">
+                    <i class="fas fa-envelope"></i> Email Us about {{project_name}}
+                </a>
+            </div>
         </div>
 
         <!-- Right Half: Carousel -->
@@ -139,10 +145,16 @@
     const message = "Hello, I’m interested in learning more about " + projectName + listingText + "Could you please provide more details?";
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const emailSubjectContent = "Inquiry about Calamba Expressive Properties " + projectName;
+    const encodedSubject = encodeURIComponent(emailSubjectContent)
+    const emailLink = `mailto:cepc.development@gmail.com?subject=${encodedSubject}&body=${encodedMessage}`
 
     // Set the href of the link with id "whatsappLink" to the generated WhatsApp link
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("whatsappLink").href = whatsappLink;
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("email-link").href = emailLink;
     });
 </script>
 {% endblock %}
