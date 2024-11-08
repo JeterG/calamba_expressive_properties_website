@@ -110,3 +110,47 @@ footer {
     margin: 0 auto;      /* Center the section in the viewport */
     padding: 20px;       /* Add padding for spacing */
 }
+
+.whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: #25D366; /* WhatsApp green color */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.whatsapp-link:hover {
+    background-color: #20b455;
+}
+
+.whatsapp-icon {
+    font-size: 24px; /* Icon size */
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.email-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #c8102e; /* Custom color for the button */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.email-link:hover {
+    background-color: #a77846;
+}
+
+.email-link i {
+    margin-right: 8px;
+}

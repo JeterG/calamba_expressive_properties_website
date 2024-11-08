@@ -6,7 +6,36 @@
 <div class="container mt-5 text-center">
     <h2>Follow Us on Facebook</h2>
     <a href="https://www.facebook.com/expressivesrealty.lynmanguiat/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="100" height="100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"
+            width="100" height="100">
+    </a>
+    
+</div>
+<div class="container mt-5 text-center">
+    <!-- WhatsApp Link with Icon -->
+    <a id="whatsappLink" target="_blank" class="whatsapp-link">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+        Message Us on WhatsApp
     </a>
 </div>
+<div class="container mt-5 text-center">
+    <a href="mailto:info@example.com?subject=Inquiry%20about%20Calamba%20Expressive%20Properties&body=Hello,%20I%20am%20interested%20in%20learning%20more%20about%20your%20services.%20Please%20provide%20me%20with%20additional%20information." target="_self" class="email-link">
+        <i class="fas fa-envelope"></i> Email Us
+    </a>
+    
+</div>
+{% endblock %}
+{% block extra_scripts %}
+
+<script>
+    const phoneNumber = "639276154651";
+    const message = "Hello, I’m interested in learning more about your listings Could you please provide more details?";
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // Set the href of the link with id "whatsappLink" to the generated WhatsApp link
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("whatsappLink").href = whatsappLink;
+    });
+</script>
 {% endblock %}
